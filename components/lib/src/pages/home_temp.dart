@@ -10,7 +10,8 @@ class HomePageTemp extends StatelessWidget {
         title: Text('Components Temp'),
       ),
       body: ListView(
-        children: _crearItems()
+        children: _crearItemsCorta()
+        // children: _crearItems()
       ),
     );
   }
@@ -28,5 +29,22 @@ class HomePageTemp extends StatelessWidget {
     }
 
     return lista;
+  }
+
+  List<Widget> _crearItemsCorta() {
+    return opciones.map((opcion) {
+      return Column(
+        children: <Widget>[
+          ListTile(
+            title: Text(opcion),
+            subtitle: Text('Cualquier cosa'),
+            leading: Icon(Icons.account_balance_wallet),
+            trailing: Icon(Icons.arrow_right),
+            onTap: () {},
+          ),
+          Divider()
+        ],
+      );
+    }).toList();
   }
 }
