@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies/widgets/card_swiper_widget.dart';
+
+import 'package:movies/src/widgets/card_swiper_widget.dart';
 
 class HomePage extends StatelessWidget {
   @override
