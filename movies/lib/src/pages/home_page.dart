@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movies/src/models/peliculas_model.dart';
 import 'package:movies/src/providers/peliculas_provider.dart';
 
 import 'package:movies/src/widgets/card_swiper_widget.dart';
+import 'package:movies/src/widgets/movie_horizontal.dart';
 
 class HomePage extends StatelessWidget {
   final peliculasProvider = PeliculasProvider();
@@ -61,15 +61,23 @@ class HomePage extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('Populares', style: Theme.of(context).textTheme.subtitle),
+          Container(
+            padding: EdgeInsets.only(left: 20.0),
+            child: Text('Populares', style: Theme.of(context).textTheme.subtitle)
+          ),
+          SizedBox(height: 5.0,),
           FutureBuilder(
             future: peliculasProvider.getPopulares(),
             builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
 
-              snapshot.data?.forEach((p) => print(p.title));
+              if (snapshot.hasData) {
+                return MovieHorizontal(peliculas: snapshot.data);
 
-              return Container();
+              } else {
+                return Center(child: CircularProgressIndicator());
+              }
             },
           ),
         ],
