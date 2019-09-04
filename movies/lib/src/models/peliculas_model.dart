@@ -64,4 +64,13 @@ class Pelicula {
     releaseDate      = json['release_date'];
   }
 
+  String getPosterImage() {
+    if (posterPath == null) {
+      return 'https://cdn11.bigcommerce.com/s-lhibl/stencil/0f397120-088c-0137-97c6-00b93c38be4d/icons/icon-no-image.svg';
+
+    } else {
+      return 'https://image.tmdb.org/t/p/w500/$posterPath';
+    }
+  }
+
 }
